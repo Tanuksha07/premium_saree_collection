@@ -1,67 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Premium Sarees Collection</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-   <!-- SECTION 1: Title -->
-  <section class="title-section">
+  <!-- SECTION 1: Title -->
+<!-- SECTION 1: Title -->
+<section class="title-section">
+  <div class="title-row">
+    <!-- <img src="assets/images/Logo_N.png" class="logo" alt="Logo"> -->
     <h1>PREMIUM SAREES COLLECTION</h1>
-    <p class="tagline">Discover Elegance. Celebrate Tradition.</p>
-  </section>
+  </div>
+  <p class="tagline">Discover Elegance. Celebrate Tradition.</p>
+</section>
 
-  <!-- SECTION 2: Details -->
-  <section class="details-section">
-    <p><strong>Price Range:</strong> ₹800 – ₹15,000</p>
-    <p><strong>Easy Payment:</strong> UPI / Cash</p>
+  <!-- HERO BANNER - FULL SLIDER -->
+  <section class="hero-banner">
+    <div class="hero-slider-container">
 
-    <div class="discount-box">
-      <strong>Special Discount</strong><br>
-      Upto 10% – 15% OFF<br>
-      <span>For Cash Buyers</span>
+      <!-- Slide 1 -->
+      <div class="hero-banner-slide active">
+        <div class="hero-slide-content">
+          <div class="hero-slide-image">
+            <img src="assets/images/Banner1.jpg" alt="Elegant Designer Saree">
+          </div>
+          <div class="hero-slide-text">
+            <h2>
+              Designer Sarees
+              <span>For Every Occasion</span>
+            </h2>
+            <p>
+              Experience the perfect blend of tradition and elegance.
+              Our handpicked collection features exquisite designer sarees
+              crafted for weddings, festivals, and special celebrations.
+            </p>
+            <a href="#gallery-section" class="hero-cta">EXPLORE COLLECTION</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="hero-banner-slide">
+        <div class="hero-slide-content">
+          <div class="hero-slide-image">
+            <img src="assets/images/Banner2.png" alt="Premium Festival Wear">
+          </div>
+          <div class="hero-slide-text">
+            <h2>
+              Premium Collection
+              <span>Festival Special</span>
+            </h2>
+            <p>
+              Celebrate in style with our premium festival collection.
+              Each saree is carefully curated to make your special
+              moments even more memorable and beautiful.
+            </p>
+            <a href="#gallery-section" class="hero-cta">SHOP NOW</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="hero-banner-slide">
+        <div class="hero-slide-content">
+          <div class="hero-slide-image">
+            <img src="assets/images/Banner4.jpg" alt="Royal Wedding Saree">
+          </div>
+          <div class="hero-slide-text">
+            <h2>
+              Royal Elegance
+              <span>Wedding Collection</span>
+            </h2>
+            <p>
+              Make your wedding day unforgettable with our royal collection.
+              Luxurious fabrics, intricate designs, and timeless beauty
+              come together in perfect harmony.
+            </p>
+            <a href="#gallery-section" class="hero-cta">VIEW COLLECTION</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="hero-banner-slide">
+        <div class="hero-slide-content">
+          <div class="hero-slide-image">
+            <img src="assets/images/Banner3.jpg" alt="Signature Designer">
+          </div>
+          <div class="hero-slide-text">
+            <h2>
+              Signature Style
+              <span>Exclusive Designs</span>
+            </h2>
+            <p>
+              Stand out with our exclusive signature designs.
+              Limited edition pieces that showcase exceptional
+              craftsmanship and contemporary elegance.
+            </p>
+            <a href="#gallery-section" class="hero-cta">DISCOVER MORE</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="hero-banner-slide">
+        <div class="hero-slide-content">
+          <div class="hero-slide-image">
+            <img src="assets/images/Banner5.jpg" alt="Luxury Ethnic Wear">
+          </div>
+          <div class="hero-slide-text">
+            <h2>
+              Luxury Redefined
+              <span>Ethnic Elegance</span>
+            </h2>
+            <p>
+              Indulge in luxury with our premium ethnic collection.
+              Soft, comfortable fabrics combined with stunning
+              designs for the modern Indian woman.
+            </p>
+            <a href="#gallery-section" class="hero-cta">BROWSE COLLECTION</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <div class="banner-arrow prev" onclick="changeBannerSlide(-1)">‹</div>
+      <div class="banner-arrow next" onclick="changeBannerSlide(1)">›</div>
+
+      <!-- Dots Navigation -->
+      <div class="banner-dots">
+        <span class="banner-dot active" onclick="currentBannerSlide(0)"></span>
+        <span class="banner-dot" onclick="currentBannerSlide(1)"></span>
+        <span class="banner-dot" onclick="currentBannerSlide(2)"></span>
+        <span class="banner-dot" onclick="currentBannerSlide(3)"></span>
+        <span class="banner-dot" onclick="currentBannerSlide(4)"></span>
+      </div>
+
     </div>
-
-    <p class="perfect-for">
-      <strong>Perfect For:</strong><br>
-      Festivals • Weddings • Gifting
-    </p>
-
-    <p class="contact">📞 8263881993 | 8698545460</p>
-
-    <a class="whatsapp"
-       href="https://wa.me/918263881993?text=Hi%20I%20want%20to%20know%20more%20about%20your%20saree%20collection"
-       target="_blank">
-      SHOP ON WHATSAPP
-    </a>
-
-    <p class="delivery">🚚 Home Delivery Available</p>
   </section>
+
+  <!-- JavaScript for Full Banner Slider -->
+  <script>
+    let currentBannerIndex = 0;
+
+    function showBannerSlide(index) {
+      const slides = document.querySelectorAll('.hero-banner-slide');
+      const dots = document.querySelectorAll('.banner-dot');
+
+      // Wrap around
+      if (index >= slides.length) {
+        currentBannerIndex = 0;
+      } else if (index < 0) {
+        currentBannerIndex = slides.length - 1;
+      } else {
+        currentBannerIndex = index;
+      }
+
+      // Remove active class from all
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+
+      // Add active class to current
+      slides[currentBannerIndex].classList.add('active');
+      dots[currentBannerIndex].classList.add('active');
+    }
+
+    function changeBannerSlide(direction) {
+      showBannerSlide(currentBannerIndex + direction);
+    }
+
+    function currentBannerSlide(index) {
+      showBannerSlide(index);
+    }
+
+    // Auto-slide every 5 seconds
+    setInterval(() => {
+      changeBannerSlide(1);
+    }, 10000);
+  </script>
 
   <!-- SECTION 3: Saree Images -->
   <section class="gallery-section">
     <h2>Our Collection</h2>
 
     <div class="gallery">
+
+      <!-- Range -- 1500 -->
       <div class="card">
-        <img src="assets/images/img1.png" alt="Silk Saree">
-        <p>Silk Saree</p>
+        <img src="assets/images/Saree5.png" alt="Designer Saree">
+        <p class="saree-name">Elegant Designer Saree</p>
+        <p class="price">₹1,500</p>
+        <p class="fabric">Wedding Wear <br> With Designer Blouse Piece</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Elegant%20Designer%20Saree%0APrice:%20₹1,500%"
+          target="_blank">
+          SHOP NOW
+        </a>
       </div>
 
       <div class="card">
-        <img src="assets/images/img1.png" alt="Cotton Saree">
-        <p>Cotton Saree</p>
+        <img src="assets/images/Saree8.png" alt="Designer Saree">
+        <p class="saree-name">Premium Designer Saree</p>
+        <p class="price">₹1,500</p>
+        <p class="fabric">Premium Festival Wear <br> Elegant Traditional Finish</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Premium%20Designer%20Saree%0APrice:%20₹1,500%"
+          target="_blank">
+          SHOP NOW
+        </a>
       </div>
 
       <div class="card">
-        <img src="assets/images/img1.png" alt="Designer Saree">
-        <p>Designer Saree</p>
+        <img src="assets/images/Saree14.png" alt="Designer Saree">
+        <p class="saree-name">Royal Designer Saree</p>
+        <p class="price">₹1,500</p>
+        <p class="fabric">Occasion Special <br> Rich Pallu Design</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Royal%20Designer%20Saree%0APrice:%20₹1,500%"
+          target="_blank">
+          SHOP NOW
+        </a>
       </div>
+
+      <div class="card">
+        <img src="assets/images/Saree15.png" alt="Designer Saree">
+        <p class="saree-name">Signature Designer Saree</p>
+        <p class="price">₹1,500</p>
+        <p class="fabric">Designer Wear <br> Heavy Border Work</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Signature%20Designer%20Saree%0APrice:%20₹1,500%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+
+      <div class="card">
+        <img src="assets/images/Saree10.png" alt="Designer Saree">
+        <p class="saree-name">Luxury Designer Saree</p>
+        <p class="price">₹1,500</p>
+        <p class="fabric">Ethnic Wear Saree <br> Soft & Comfortable Fabric</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Luxury%20Designer%20Saree%0APrice:%20₹1,500%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+      <!-- Range -- 1500 -->
+
+      <!-- Range -- 1200 -->
+      <div class="card">
+        <img src="assets/images/Saree18.png" alt="Designer Saree">
+        <p class="saree-name">Classic Printed Saree</p>
+        <p class="price">₹1,200</p>
+        <p class="fabric">Luxury Collection <br> Fine Weaving & Detailing</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Classic%20Printed%20Saree%0APrice:%20₹1,200%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+
+      <div class="card">
+        <img src="assets/images/Saree2.png" alt="Cotton Saree">
+        <p class="saree-name">Ethnic Printed Saree</p>
+        <p class="price">₹1,200</p>
+        <p class="fabric">Classic Traditional Wear <br> Timeless Design</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Ethnic%20Printed%20Saree%0APrice:%20₹1,200%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+
+      <!-- <div class="card">
+        <img src="assets/images/Saree4.png" alt="Designer Saree">
+        <p class="saree-name">Traditional Printed Saree</p>
+        <p class="price">₹1,200</p>
+        <p class="fabric">Grand Celebration Wear<br> Perfect for Functions</p>
+      </div> -->
+
+      <div class="card">
+        <img src="assets/images/Saree11.png" alt="Designer Saree">
+        <p class="saree-name">Casual Wear Printed Saree</p>
+        <p class="price">₹1,200</p>
+        <p class="fabric">Handpicked Designer Saree<br> Premium Quality Fabric</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Casual%20Wear%20Printed%20Saree%0APrice:%20₹1,200%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+
+      <div class="card">
+        <img src="assets/images/Saree19.png" alt="Designer Saree">
+        <p class="saree-name">Modern Printed Saree</p>
+        <p class="price">₹1,200</p>
+        <p class="fabric">Elegant Evening Wear <br> Stylish Modern Touch</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Elegant%20Printed%20Saree%0APrice:%20₹1,200%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+
+      <div class="card">
+        <img src="assets/images/Saree9.png" alt="Designer Saree">
+        <p class="saree-name">Festive Collection Saree</p>
+        <p class="price">₹1,200</p>
+        <p class="fabric">Festive Special Collection<br> Vibrant Color Shades</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Festive%20Collection%20Saree%0APrice:%20₹1,200%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+
+      <div class="card">
+        <img src="assets/images/Saree17.png" alt="Designer Saree">
+        <p class="saree-name">Grand Occasion Saree</p>
+        <p class="price">₹1,200</p>
+        <p class="fabric">Royal Look Saree<br> Rich Texture & Finish</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Grand%20Occasion%20Saree%0APrice:%20₹1,200%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+      <!-- Range -- 1200 -->
+
+      <!-- Range -- 1000 -->
+      <div class="card">
+        <img src="assets/images/Saree1.png" alt="Silk Saree">
+        <p class="saree-name">Classic Grace Saree</p>
+        <p class="price">₹1,000</p>
+        <p class="fabric">Lightweight Party Wear<br>Easy to Drape</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Classic%20Grace%20Saree%0APrice:%20₹1,000%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+
+      <div class="card">
+        <img src="assets/images/Saree16.png" alt="Designer Saree">
+        <p class="saree-name">Regal Charm Saree</p>
+        <p class="price">₹1,000</p>
+        <p class="fabric">Exclusive Designer Piece<br>Limited Stock Available</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Regal%20Charm%20Saree%0APrice:%20₹1,000%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+
+      <!-- <div class="card">
+        <img src="assets/images/Saree13.png" alt="Designer Saree">
+        <p class="saree-name">Eternal Beauty Saree</p>
+        <p class="price">₹1,000</p>
+        <p class="fabric">Traditional Ethnic Wear<br>Suitable for All Ages</p>
+      </div> -->
+
+      <div class="card">
+        <img src="assets/images/Saree6.png" alt="Designer Saree">
+        <p class="saree-name">Royal Grace Saree</p>
+        <p class="price">₹1,000</p>
+        <p class="fabric">Statement Saree<br> Eye-Catching Design</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Royal%20Grace%20Saree%0APrice:%20₹1,000%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+
+      <div class="card">
+        <img src="assets/images/Saree20.png" alt="Designer Saree" class="saree-img"
+          data-images="assets/images/Saree4.png,assets/images/Saree13.png">
+        <!-- <img src="assets/images/Saree20.png,assets/images/Saree4.png,assets/images/Saree13.png" alt="Designer Saree"> -->
+        <p class="saree-name">Premium Ethnic Saree</p>
+        <p class="price">₹1,000</p>
+        <p class="fabric">Classic Wedding Collection<br>Graceful & Elegant Look</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Premium%20Ethnic%20Saree%0APrice:%20₹1,000%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+      <!-- Range -- 1000 -->
+
+      <!-- Range -- 800 -->
+      <div class="card">
+        <img src="assets/images/Saree7.png" alt="Designer Saree">
+        <p class="saree-name">Soft Silk Saree</p>
+        <p class="price">₹800</p>
+        <p class="fabric">Premium Occasion Wear<br>Perfect Gifting Option</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Soft%20Silk%20Saree%20Green%0APrice:%20₹800%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+
+      <div class="card">
+        <img src="assets/images/Saree3.png" alt="Designer Saree">
+        <p class="saree-name">Soft Silk Saree</p>
+        <p class="price">₹800</p>
+        <p class="fabric">High-end Occasion Clothing <br> Finest Quality Fabric</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Soft%20Silk%20Saree%20Blue%0APrice:%20₹800%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+
+      <div class="card">
+        <img src="assets/images/Saree12.png" alt="Designer Saree">
+        <p class="saree-name">Soft Silk Saree</p>
+        <p class="price">₹800</p>
+        <p class="fabric">Timeless Indian Elegance<br>Celebration Wear Essential</p>
+        <a class="offer shop-now"
+          href="https://wa.me/918698545460?text=Hi%20I%20am%20interested%20in%20this%20saree:%0A%0AName:%20Soft%20Silk%20Saree%20Red%0APrice:%20₹800%"
+          target="_blank">
+          SHOP NOW
+        </a>
+      </div>
+      <!-- Range -- 800 -->
     </div>
   </section>
 
+  <!-- SECTION 2: Details -->
+  <section class="details-section">
+
+    <div class="details-cards">
+
+      <div class="detail-card">
+        <h3>Price Range</h3>
+        <p>Premium sarees crafted for every occasion</p>
+        <p>Affordable luxury starting from</p>
+        <p><strong>₹500 to ₹1,500</strong></p>
+        <small>Best value for money</small>
+      </div>
+
+      <div class="detail-card">
+        <h3>Easy Payment</h3>
+        <p>Smooth and secure payment experience</p>
+        <p><strong>UPI & Cash Accepted</strong></p>
+        <small>Fast checkout process</small>
+      </div>
+
+      <div class="detail-card">
+        <h3>Special Discount</h3>
+        <p>10% – 15% OFF<br><small>For Cash Buyers</small></p>
+        <p><small>*Terms & Conditions Apply</small></p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Perfect For</h3>
+        <p>• Festivals</p>
+        <p>• Weddings</p>
+        <p>• Gifting</p>
+      </div>
+
+      <div class="detail-card">
+        <h3>Order Now</h3>
+        <a class="whatsapp"
+          href="https://wa.me/918698545460?text=Hi%20I%20want%20to%20know%20more%20about%20your%20saree%20collection"
+          target="_blank">
+          SHOP ON WHATSAPP
+        </a>
+        <p class="delivery">🚚 Home Delivery Available</p>
+      </div>
+
+    </div>
+
+  </section>
 
 </body>
+
 </html>
